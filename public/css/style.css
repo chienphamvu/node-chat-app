@@ -83,10 +83,10 @@ button:disabled {
   display: flex;
 }
 
-.main__container {
+/*.main__container {
     display: flex;
     flex-direction: row;
-}
+}*/
 
 .chat__sidebar {
   overflow-y: scroll;
