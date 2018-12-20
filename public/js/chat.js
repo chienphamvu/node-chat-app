@@ -37,6 +37,16 @@ socket.on('disconnect', function() {
     console.log('Disconnected from server')
 })
 
+socket.on('updateUserList', function(users) {
+    var ol = jQuery('<ol></ol>')
+
+    users.forEach(function(user) {
+        ol.append(jQuery('<li></li>').text(user))
+    })
+
+    jQuery('#users').html(ol)
+})
+
 socket.on('newMessage', function(message) {
     var formattedTime = moment(message.createdAt).format('h:mm a')
 
@@ -49,13 +59,6 @@ socket.on('newMessage', function(message) {
 
     jQuery('#messages').append(html)
     scrollToBottom()
-})
-
-socket.emit('createMessage', {
-    from: 'Frank',
-    text: 'Hi'
-}, function() {
-    console.log('Got it')
 })
 
 socket.on('newLocationMessage', function(message) {
